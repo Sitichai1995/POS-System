@@ -1,3 +1,6 @@
+<?php 
+require __DIR__ . '/../admin/config/function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <!-- <head>
