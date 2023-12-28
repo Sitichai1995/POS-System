@@ -15,7 +15,7 @@
 
         $_SESSION['status'] = $status;
         header('location: '.$url);
-        exit(0);
+        exit();
     }
 
     //Display message
