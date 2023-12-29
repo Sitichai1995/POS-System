@@ -1,5 +1,6 @@
 <?php 
 require __DIR__ . '/../config/function.php';
+require __DIR__ . '/../authentication.php';
 ?>
 
 <!DOCTYPE html>
