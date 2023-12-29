@@ -1,6 +1,6 @@
 <?php 
 
-require "./admin/config/function.php";
+require __DIR__ ."/admin/config/function.php";
 
 if (isset($_SESSION['loggedIn'])) {
     
