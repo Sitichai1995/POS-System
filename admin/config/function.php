@@ -142,5 +142,12 @@
             return'<h5> No id Given </h5>';
         }
     }
+
+    //logout function
+    function logoutSession (){
+
+        unset($_SESSION['loggedIn']);
+        unset($_SESSION['loggedInUser']);
+    };
     
 ?>
