@@ -27,7 +27,7 @@ if (isset($_POST['loginBtn'])) {
                 }
 
                 $_SESSION['loggedIn'] = true;
-                $_SESSION['loggenInUser'] = [
+                $_SESSION['loggedInUser'] = [
                     'user_id' => $row['id'],
                     'name' => $row['name'],
                     'password' => $row['password'],
