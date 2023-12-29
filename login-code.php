@@ -31,7 +31,7 @@ if (isset($_POST['loginBtn'])) {
                     'user_id' => $row['id'],
                     'name' => $row['name'],
                     'password' => $row['password'],
-                    'phone' => $row['phone']
+                    'email' => $row['email']
                 ];
 
                 redirect('admin/index.php', 'Logged In successfully.');
