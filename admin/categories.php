@@ -17,6 +17,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Description</th>
                         <th>status</th>
                         <th>Action</th>
                     </tr>
@@ -34,6 +35,7 @@
                         <tr>
                             <td><?= $item['id']?></td>
                             <td><?= $item['name']?></td>
+                            <td><?= $item['description']?></td>
                             <td>
                                 <?php
                                     if ($item['status'] == 1) {
