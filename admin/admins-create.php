@@ -1,5 +1,5 @@
 <?php 
-    include('includes/header.php');
+    include('includes/header.php'); 
 ?>
   
     <div class="container-fluid px-4">
@@ -20,18 +20,24 @@
                         <label for="">Name *</label>
                         <input type="text" name="name" required class="form-control" />
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="">Description</label>
-                        <textarea name="description" id=""rows="3" class="form-control"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="">Status (checked = Hidden, unchecked = visible)</label>
-                        <br/>
-                        <input type="checkbox" name="status" style="width: 30px; height: 30px;" class="">
+                    <div class="col-md-6 mb-3">
+                        <label for="">Email *</label>
+                        <input type="email" name="email" required class="form-control" />
                     </div>
                     <div class="col-md-6 mb-3">
-                        <br/>
-                        <button type="submit" name="saveCategory" class="btn btn-success">Save</button>
+                        <label for="">Password *</label>
+                        <input type="password" name="password" required class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Phone Number *</label>
+                        <input type="number" name="phone" required class="form-control" />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="">Is ban</label>
+                        <input type="checkbox" name="is_ban" style="width:30px; height:30px;"/>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button type="submit" name="saveAdmin" class="btn btn-success">Save</button>
                     </div>
                 </div>
             </form>
