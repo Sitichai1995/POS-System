@@ -243,6 +243,43 @@ if (isset($_POST['updateProduct'])) {
 
 
 //customer
+if (isset($_POST['updateCustomer'])) {
+    //validate
+    $customerId = validate($_POST['customerId']);
+    $name =  validate($_POST['name']);
+    $email =  validate($_POST['email']);
+    $phone =  validate($_POST['phone']);
+    $status =  isset($_POST['status']) == true ? 1 : 0;
+
+    if ($name != '') {
+
+        //check email is already used.
+        $checkEmail = mysqli_query($conn, "SELECT * FROM customers WHERE email = '$email' AND id != '$customerId'");
+        if ($checkEmail) {
+            if (mysqli_num_rows($checkEmail) > 0) {
+                redirect('customers-edit.php?id='.$customerId, 'Email is already used.');
+            }
+        }
+
+        $data = [
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'status' => $status
+        ];
+
+        $result = update('customers',$customerId, $data);
+        if ($result) {
+            redirect('customers-edit.php?id='.$customerId, 'customer Updated Successfully.');
+        }else{
+            redirect('customers-edit.php?id='.$customerId, 'Something went wrong.');
+
+        }
+    } else {
+        redirect('customers-edit.php?id='.$customerId, 'Please fill requied field.');
+    }
+}
+
 if (isset($_POST['saveCustomer'])) {
     //validate
     $name =  validate($_POST['name']);
