@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="">Quantity</label>
-                        <input type="text" name="quatity" required class="form-control" />
+                        <input type="text" name="quantity" required class="form-control" />
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="">Image</label>
