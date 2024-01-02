@@ -50,7 +50,7 @@
 
                             <td>
                                 <a href="customers-edit.php?id=<?= $item['id']?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="customers-delete.php?id=<?= $item['id']?>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="customers-delete.php?id=<?= $item['id']?>" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>    
                         <?php endforeach; ?>
