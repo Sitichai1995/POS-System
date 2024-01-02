@@ -182,3 +182,63 @@ if (isset($_POST['saveProduct'])) {
 }
 
 
+if (isset($_POST['updateProduct'])) {
+
+    $product_id = validate($_POST['product_id']);
+   
+
+    $productData = getById('products', $product_id);
+    // var_dump($productData) ;
+    // exit();
+    if (!$productData) {
+        redirect('products.php', 'No such product found');
+    }
+
+    
+    $category_id = validate($_POST['category_id']);
+    $name = validate($_POST['name']);
+    $description = validate($_POST['description']);
+    $price = validate($_POST['price']);
+    $quantity = validate($_POST['quantity']);
+    $status = isset($_POST['status']) == true ? 1 : 0;
+
+    if ($_FILES['image']['size'] >0) {
+        $path = "../assets/uploads/products";
+        $image_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+        $filename = time().'.'.$image_ext;
+
+        move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
+
+        $finalImage = 'assets/uploads/products'.$filename;
+
+        $deleteImage = "../".$deleteImage['data']['image'];
+        if (file_exists($deleteImage)) {
+            unlink($deleteImage);
+        }
+       
+    } else {
+        $finalImage = '';
+    }
+    
+
+    $data = [
+        'category_id' => $category_id,
+        'name' => $name,
+        'description' => $description,
+        'price' => $price,
+        'quantity' => $quantity,
+        'image' => $finalImage,
+        'status' => $status,
+    ];
+    // var_dump($data);
+    // exit();
+    $result = update('products',$product_id, $data);
+
+    if ($result) {
+        redirect('products-edit.php?id='.$product_id, 'products Updated Successfully');
+    } else {
+        redirect('products-edit.php?id='.$product_id, 'Something Went Wrong!');
+    }
+}
+
