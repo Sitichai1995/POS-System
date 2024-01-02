@@ -35,17 +35,17 @@ include('includes/header.php');
                                 <?php
                                 $categories = getAll('categories');
                                 if ($categories) {
+
                                     if (mysqli_num_rows($categories) > 0) {
                                         foreach ($categories as $category) {
                                             ?>
 
                                                 <option value="<?=$category['id']; ?>"
-                                                <?= $category['data']['category_id'] == $category['id']? 'selected': ''; ?>
+                                                <?= $product['data']['category_id'] == $category['id'] ? 'selected': ''; ?>
                                                 >
-                                                
+                                                <?= $category['name'] ?>
                                                 </option>
                                             <?php
-                                            echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
                                         }
                                     } else {
                                         echo '<option value="">No Categories found.</option>';
@@ -70,7 +70,7 @@ include('includes/header.php');
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="">Quantity</label>
-                            <input type="text" name="quatity" required value="<?= $product['data']['quantity'];?>" class="form-control" />
+                            <input type="text" name="quantity" required value="<?= $product['data']['quantity'];?>" class="form-control" />
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="">Image</label>
@@ -81,11 +81,12 @@ include('includes/header.php');
                         <div class="col-md-6">
                             <label for="">Status (checked = Hidden, unchecked = visible)</label>
                             <br />
+                            
                             <input type="checkbox" name="status" style="width: 30px; height: 30px;" value="<?= $product['data']['name'] == true ? 'checked' : "" ?>" class="">
                         </div>
                         <div class="col-md-6 mb-3">
                             <br />
-                            <button type="submit" name="updateProduct" class="btn btn-success">Save</button>
+                            <button type="submit" name="updateProduct" class="btn btn-success">Update</button>
                         </div>
                     </div>
             <?php
