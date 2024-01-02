@@ -13,6 +13,13 @@ if( is_numeric($paramResult)){
         $deleted = delete('products', $itemId);
 
         if ($deleted) {
+            
+            $deleteimage = "../".$itemdata['data']['image'];
+            
+            if (file_exists($deleteimage)) {
+                unlink($deleteimage);
+            }
+
             redirect('products.php','deleted successfully.');
         } else {
             redirect('products.php','something went wrong.');
