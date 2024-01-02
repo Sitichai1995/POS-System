@@ -52,7 +52,7 @@
 
                             <td>
                                 <a href="products-edit.php?id=<?= $item['id']?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="products-delete.php?id=<?= $item['id']?>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="products-delete.php?id=<?= $item['id']?>" class="btn btn-danger btn-sm" onclick=" return confirm('Are you sure to delete ?')">Delete</a>
                             </td>
                         </tr>    
                         <?php endforeach; ?>
