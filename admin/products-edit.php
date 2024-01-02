@@ -26,6 +26,7 @@ include('includes/header.php');
             if ($product) {
                 if ($product['status'] == 200) {
             ?>
+                    <input type="hidden" name="product_id" value="<?= $product['data']['id']; ?>">
                     <div class="row">
                         <div class="col-md-12">
                             <label> Select Category</label>
@@ -36,6 +37,14 @@ include('includes/header.php');
                                 if ($categories) {
                                     if (mysqli_num_rows($categories) > 0) {
                                         foreach ($categories as $category) {
+                                            ?>
+
+                                                <option value="<?=$category['id']; ?>"
+                                                <?= $category['data']['category_id'] == $category['id']? 'selected': ''; ?>
+                                                >
+                                                
+                                                </option>
+                                            <?php
                                             echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
                                         }
                                     } else {
@@ -49,33 +58,34 @@ include('includes/header.php');
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">Product Name *</label>
-                            <input type="text" name="name" required class="form-control" />
+                            <input type="text" name="name" required value="<?= $product['data']['name'];?>" class="form-control" />
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="">Description</label>
-                            <textarea name="description" id="" rows="3" class="form-control"></textarea>
+                            <textarea name="description" id="" rows="3" class="form-control"><?= $product['data']['description'];?></textarea>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="">Price</label>
-                            <input type="text" name="price" required class="form-control" />
+                            <input type="text" name="price" required value="<?= $product['data']['price'];?>" class="form-control" />
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="">Quantity</label>
-                            <input type="text" name="quatity" required class="form-control" />
+                            <input type="text" name="quatity" required value="<?= $product['data']['quantity'];?>" class="form-control" />
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="">Image</label>
                             <input type="file" name="image" required class="form-control" />
+                            <img  src="../<?= $product['data']['name'];?>" style="width: 40px; height: 40px;" alt="img"/>
                         </div>
 
                         <div class="col-md-6">
                             <label for="">Status (checked = Hidden, unchecked = visible)</label>
                             <br />
-                            <input type="checkbox" name="status" style="width: 30px; height: 30px;" class="">
+                            <input type="checkbox" name="status" style="width: 30px; height: 30px;" value="<?= $product['data']['name'] == true ? 'checked' : "" ?>" class="">
                         </div>
                         <div class="col-md-6 mb-3">
                             <br />
-                            <button type="submit" name="saveProduct" class="btn btn-success">Save</button>
+                            <button type="submit" name="updateProduct" class="btn btn-success">Save</button>
                         </div>
                     </div>
             <?php
