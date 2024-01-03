@@ -90,3 +90,9 @@ if (isset($_POST['productIncDec'])) {
         jsonResponse (500, 'error', 'something went wrong.');
     }
 }
+
+
+if (isset($_POST['proceedToPlaceBtn'])) {
+    $cPhone = validate($_POST['cPhone']);
+    //next here
+}
