@@ -27,6 +27,7 @@
         $('.mySelect2').select2();
     });
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="assets/js/custom.js"></script>
 </body>
 
