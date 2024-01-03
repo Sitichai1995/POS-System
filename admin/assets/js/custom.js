@@ -60,4 +60,36 @@ $(document).ready(function(){
             }
         });
     }
+
+    //proceed to place order button click
+    $(document).on('click','.proceedToPlace', function () {
+
+        let cPhone = $('#cphone').val();
+        let paymentMode = $('#payment_mode').val();
+
+        if (paymentMode == '') {
+            swal("select payment Mode", "Please select your payment mode","warning");
+            return false;
+        }
+
+        if (cPhone == '' && !$.isNumeric(cPhone)) {
+            swal("Enter phone number", "Please Enter phone number","warning");
+            return false;
+        }
+
+        let data = {
+            'proceedToPlaceBtn': true,
+            'cPhone': cPhone,
+            'paymentMode': paymentMode
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "order-code.php",
+            data: data,
+            success: function (response) {
+                
+            }
+        });
+    });
 });
