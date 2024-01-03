@@ -43,7 +43,7 @@ include('includes/header.php');
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <br />
+                        <br/>
                         <button type="submit" name="addItem" class="btn btn-success">Add item</button>
                     </div>
                 </div>
@@ -74,16 +74,19 @@ include('includes/header.php');
 
                         </thead>
                         <tbody>
-                            <?php foreach ($sessionProducts as $key => $item) : ?>
+                            <?php
+                             $i=1;
+                             foreach ($sessionProducts as $key => $item) : ?>
                                 <tr>
-                                    <td><?= $key ?></td>
+                                    <td><?= $i++ ?></td>
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['price'] ?></td>
                                     <td>
-                                        <div class="input-group">
-                                            <button class="input-group-text">-</button>
+                                        <div class="input-group qty-box">
+                                            <input type="hidden" value="<?= $item['production_id']?>" class="prodId"/>
+                                            <button class="input-group-text decrement">-</button>
                                             <input type="text" value="<?= $item['quantity'] ?>" class="qty qauantityInput">
-                                            <button class="input-group-text">+</button>
+                                            <button class="input-group-text increment">+</button>
                                         </div>
                                     </td>
                                     <td><?= $item['price'] * $item['quantity'], 0 ?></td>
