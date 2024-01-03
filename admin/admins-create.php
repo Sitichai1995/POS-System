@@ -1,18 +1,18 @@
-<?php 
-    include('includes/header.php'); 
+<?php
+include('includes/header.php');
 ?>
-  
-    <div class="container-fluid px-4">
-        <div class="card mt-4 shadow-md">
-            <div class="card-header">
-                <h4 class="mb-0">Add Admin
-                    <a href="admins.php" class="btn btn-primary float-end">Back</a>
-                </h4>
 
-            </div>
+<div class="container-fluid px-4">
+    <div class="card mt-4 shadow-md">
+        <div class="card-header">
+            <h4 class="mb-0">Add Admin
+                <a href="admins.php" class="btn btn-primary float-end">Back</a>
+            </h4>
+
         </div>
+
         <div class="card-body">
-            <?php alertMessage();?>
+            <?php alertMessage(); ?>
             <form action="code.php" method="POST">
 
                 <div class="row">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="">Is ban</label>
-                        <input type="checkbox" name="is_ban" style="width:30px; height:30px;"/>
+                        <input type="checkbox" name="is_ban" style="width:30px; height:30px;" />
                     </div>
                     <div class="col-md-3 mb-3">
                         <button type="submit" name="saveAdmin" class="btn btn-success">Save</button>
@@ -44,4 +44,6 @@
         </div>
     </div>
 
-<?php include('includes/footer.php')?>
+</div>
+
+<?php include('includes/footer.php') ?>
