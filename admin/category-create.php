@@ -10,8 +10,8 @@
                 </h4>
 
             </div>
-        </div>
-        <div class="card-body">
+
+             <div class="card-body">
             <?php alertMessage();?>
             <form action="code.php" method="POST">
                 <div class="row">
@@ -35,6 +35,8 @@
                 </div>
             </form>
         </div>
+        </div>
+       
     </div>
 
 <?php include('includes/footer.php')?>
