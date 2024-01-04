@@ -2,6 +2,35 @@
 include('includes/header.php');
 ?>
 
+<div class="modal fade" id="addCustomerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Add customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Enter Customer Name</label>
+                    <input type="text" class="form-control" id="c-name"/>
+                </div>
+                <div class="mb-3">
+                    <label>Enter Customer Phone number</label>
+                    <input type="tel" class="form-control" id="c-phone"/>
+                </div>
+                <div class="mb-3">
+                    <label>Enter Customer Email</label>
+                    <input type="email" class="form-control" id="c-email"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success saveCustomer">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid px-4">
     <div class="card mt-4 shadow-md">
         <div class="card-header">
@@ -43,7 +72,7 @@ include('includes/header.php');
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <br/>
+                        <br />
                         <button type="submit" name="addItem" class="btn btn-success">Add item</button>
                     </div>
                 </div>
@@ -60,7 +89,7 @@ include('includes/header.php');
             if (isset($_SESSION['productItems'])) {
                 $sessionProducts = $_SESSION['productItems'];
             ?>
-                <div class="table-responsive mb-3" >
+                <div class="table-responsive mb-3">
                     <table class="table table-bordered table-striped" id="productContent">
                         <thead>
                             <tr>
@@ -75,15 +104,15 @@ include('includes/header.php');
                         </thead>
                         <tbody>
                             <?php
-                             $i=1;
-                             foreach ($sessionProducts as $key => $item) : ?>
+                            $i = 1;
+                            foreach ($sessionProducts as $key => $item) : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['price'] ?></td>
                                     <td>
                                         <div class="input-group qty-box">
-                                            <input type="hidden" value="<?= $item['production_id']?>" class="prodId"/>
+                                            <input type="hidden" value="<?= $item['production_id'] ?>" class="prodId" />
                                             <button class="input-group-text decrement">-</button>
                                             <input type="text" value="<?= $item['quantity'] ?>" class="qty qauantityInput">
                                             <button class="input-group-text increment">+</button>
@@ -113,10 +142,10 @@ include('includes/header.php');
                         </div>
                         <div class="col-md-4">
                             <label>Enter customer phone number</label>
-                            <input type="number" id="cphone" class="form-control"/>
+                            <input type="number" id="cphone" class="form-control" value="" />
                         </div>
                         <div class="col-md-4">
-                            <br/>
+                            <br />
                             <button type="button" class="btn btn-success proceedToPlace">Proceed to place order</button>
                         </div>
                     </div>
