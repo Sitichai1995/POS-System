@@ -103,20 +103,45 @@ if (isset($_POST['proceedToPlaceBtn'])) {
     if ($response) {
 
         if (mysqli_num_rows($response) > 0) {
-            
-            $_SESSION['invoice_no'] = "INV - ".rand(000000, 999999);
+
+            $_SESSION['invoice_no'] = "INV - " . rand(000000, 999999);
             $_SESSION['cPhone'] = $cPhone;
             $_SESSION['payment_node'] = $paymentMode;
-            jsonResponse (200, 'success', 'customer found');
-
-
+            jsonResponse(200, 'success', 'customer found');
         } else {
-            
-            $_SESSION['cPhone'] = $cPhone;
-            jsonResponse (400, 'warning', 'customer not found');
-        }
 
+            $_SESSION['cPhone'] = $cPhone;
+            jsonResponse(400, 'warning', 'customer not found');
+        }
     } else {
-        jsonResponse (500, 'error', 'something went wrong.');
+        jsonResponse(500, 'error', 'something went wrong.');
     }
+}
+
+
+if (isset($_POST['saveCustomerBtn'])) {
+    $name = validate($_POST['name']);
+    $phone = validate($_POST['phone']);
+    $email = validate($_POST['email']);
+
+    if ($name != '' && $phone != '') {
+        
+        $data = [
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $email,
+        ];
+
+        $result = insert('customers', $data);
+
+        if ($result) {
+            jsonResponse(200, 'success', 'Customer create successfully');
+        } else {
+            jsonResponse(500, 'warning', 'something went wrong.');
+        }
+        
+    } else {
+        jsonResponse(422, 'warning', 'Please fill required fields');
+    }
+    
 }
