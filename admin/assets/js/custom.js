@@ -76,14 +76,14 @@ $(document).ready(function () {
             swal("Enter phone number", "Please Enter phone number", "warning");
             return false;
         }
-        
+
         let data = {
             'proceedToPlaceBtn': true,
             'cPhone': cPhone,
             'paymentMode': paymentMode
         };
 
-       
+
         $.ajax({
             type: "POST",
             url: "order-code.php",
@@ -111,21 +111,70 @@ $(document).ready(function () {
                         .then((value) => {
                             switch (value) {
                                 case "catch":
-                                $('#addCustomerModal').modal('show');
-                                //console.log('Pop the customer add modal.')
-                                break;
+                                    $('#addCustomerModal').modal('show');
+                                    //console.log('Pop the customer add modal.')
+                                    break;
                                 default:
                             }
 
 
                         });
 
-                }else{
+                } else {
                     swal(res.message, res.message, res.status_type);
                 }
 
 
             }
         });
+    });
+
+    //Add customer to customer table 
+    $(document).on('click', '.saveCustomer', function () {
+        let cName = $('#c-name').val();
+        let cPhone = $('#c-phone').val();
+        let cEmail = $('#c-email').val();
+        // console.log(cName);
+        // return false;
+
+        if (cName != '' && cPhone != '') {
+            if ($.isNumeric(cPhone)) {
+
+                let data = {
+                    'saveCustomerBtn': true,
+                    'name': cName,
+                    'phone': cPhone,
+                    'email': cEmail,
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "order-code.php",
+                    data: data,
+                    success: function (response) {
+                        // console.log(response)
+                        // return false;
+                        let res = JSON.parse(response)
+
+                        if (res.status == 200) {
+                            swal(res.message, res.message, res.status_type);
+                            $('#addCustomerModal').modal('hide');
+
+                        } else if (res.status == 422) {
+                            swal(res.message, res.message, res.status_type);
+
+                        } else {
+
+                        }
+                    }
+                });
+
+            } else {
+                swal('invalid Data', 'Please enter valid data in box.', 'warning');
+            }
+
+        } else {
+            swal('Do not leave any blank', 'Ensure all fields are filled in; do not leave any blank.', 'warning');
+        }
     });
 });
