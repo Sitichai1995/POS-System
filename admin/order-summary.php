@@ -5,7 +5,24 @@ if (!isset($_SESSION['productItems'])) {
 }
 ?>
 
-<div class="container-fluid px-4">
+<div class="modal fade" id="orderSuccessModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="mb-3 p-4">
+                    <h6 id="orderPlaceSuccessMessage"></h6>
+                </div>
+
+                <a href="orders.php" class="btn btn-secondary">Close </a>
+                <button type="button" class="btn btn-primary">Print</button>
+                <button type="button" class="btn btn-success">Download PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid px-4 ">
     <div class="row">
         <div class="col-md-12">
             <div class="card mt-4">
@@ -81,24 +98,24 @@ if (!isset($_SESSION['productItems'])) {
                                         <?php
                                         $i = 1;
                                         $totalAmount = 0;
-                                        foreach($sessionProducts as $key => $row) :
+                                        foreach ($sessionProducts as $key => $row) :
                                             $totalAmount += $row['price'] * $row['quantity']
                                         ?>
-                                        <tr>
-                                            <td style="border-bottom: 1px solid #ccc;"><?= $i++?></td>
-                                            <td style="border-bottom: 1px solid #ccc;"><?= $row['name']?></td>
-                                            <td style="border-bottom: 1px solid #ccc;"><?= number_format($row['price'], 0)?></td>
-                                            <td style="border-bottom: 1px solid #ccc;"><?= $row['quantity']?></td>
-                                            <td style="border-bottom: 1px solid #ccc;" class="fw-bold"><?= number_format($row['price'] * $row['quantity'], 0)?></td>
-                                        </tr>
-                                        <?php endforeach;?>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #ccc;"><?= $i++ ?></td>
+                                                <td style="border-bottom: 1px solid #ccc;"><?= $row['name'] ?></td>
+                                                <td style="border-bottom: 1px solid #ccc;"><?= number_format($row['price'], 0) ?></td>
+                                                <td style="border-bottom: 1px solid #ccc;"><?= $row['quantity'] ?></td>
+                                                <td style="border-bottom: 1px solid #ccc;" class="fw-bold"><?= number_format($row['price'] * $row['quantity'], 0) ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                         <tr>
                                             <td colspan="4" align="end" style="font-weight: bold;">Grand total:</td>
-                                            <td colspan="1" style="font-weight: bold;"><?= number_format($totalAmount, 0)?></td>
+                                            <td colspan="1" style="font-weight: bold;"><?= number_format($totalAmount, 0) ?></td>
 
                                         </tr>
                                         <tr>
-                                        <td colspan="5" >Payment Mode: <?= $_SESSION['payment_node']; ?></td>
+                                            <td colspan="5">Payment Mode: <?= $_SESSION['payment_node']; ?></td>
                                         </tr>
                                     </tbody>
 
@@ -111,6 +128,14 @@ if (!isset($_SESSION['productItems'])) {
                         }
                         ?>
                     </div>
+
+                    <?php if (isset($_SESSION['productItems'])) : ?>
+
+                        <div class="mt-4 text-end">
+                            <button type="button" class="btn btn-primary px-4 mx-1" id="saveOrder">Save</button>
+                        </div>
+
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
