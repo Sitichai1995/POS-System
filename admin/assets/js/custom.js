@@ -68,7 +68,7 @@ $(document).ready(function () {
         let paymentMode = $('#payment_mode').val();
         if (paymentMode == '') {
             swal("select payment Mode", "Please select your payment mode", "warning");
-            alert('test');
+           
             return false;
         }
 
@@ -177,4 +177,37 @@ $(document).ready(function () {
             swal('Do not leave any blank', 'Ensure all fields are filled in; do not leave any blank.', 'warning');
         }
     });
+
+
+    //save order
+
+    $(document).on('click', '#saveOrder', function () {
+
+        // console.log('test');
+        // return false;
+        $.ajax({
+            type: "POST",
+            url: "order-code.php",
+            data: {
+                'saveOrder': true
+            },
+            success: function (response) {
+                // console.log(response);
+                // return false;
+                let res = JSON.parse(response);
+
+                if (res.status = 200) {
+                    swal(res.message, res.message, res.status_type);
+                    $('#orderPlaceSuccessMessage').text(res.message);
+                    $('#orderSuccessModal').modal('show');
+
+                } else {
+                    swal(res.message, res.message, res.status_type);
+                }
+            }
+        });
+
+    });
 });
+
+
