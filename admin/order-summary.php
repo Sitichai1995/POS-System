@@ -115,7 +115,7 @@ if (!isset($_SESSION['productItems'])) {
 
                                         </tr>
                                         <tr>
-                                            <td colspan="5">Payment Mode: <?= $_SESSION['payment_node']; ?></td>
+                                            <td colspan="5">Payment Mode: <?= $_SESSION['payment_mode']; ?></td>
                                         </tr>
                                     </tbody>
 
