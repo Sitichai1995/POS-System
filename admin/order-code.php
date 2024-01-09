@@ -180,14 +180,16 @@ if (isset($_POST['saveOrder'])) {
 
        $data = [
         'customer_id' => $customerData['id'],
-        'tracking_id' => rand(11111,99999),
+        'tracking_no' => rand(11111,99999),
         'invoice_no' => $invoice_no,
-        'total_amount' => $invoice_no,
+        'total_amount' => $totalAmount,
         'order_date' => date('Y-m-d'),
         'order_status' => 'booked',
         'payment_mode' => $payment_mode,
         'order_placed_by_id' => $order_placed_by_id
        ];
+    //    print_r($data);
+    //     exit();
       $result = insert('orders', $data);
       $lastOrderId = mysqli_insert_id($conn);
 
