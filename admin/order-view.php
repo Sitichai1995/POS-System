@@ -81,8 +81,8 @@ include('includes/header.php');
                                             <h4 class="my-3"> Order Items Details</h4>
                                             <table class="table table-bordered table-striped">
                                                 <thead>
-                                                    <tr>
-                                                        <th>Products</th>
+                                                    <tr class="text-center">
+                                                        <th class="">Products</th>
                                                         <th>Price</th>
                                                         <th>Quantity</th>
                                                         <th>Total</th>
@@ -93,7 +93,7 @@ include('includes/header.php');
                                                     foreach ($orderItemsRes as $orderItemRow) : 
                                                     ?>
                                                     <tr>
-                                                        <td>
+                                                        <td class="text-center fw-bold">
                                                             <?= $orderItemRow['name']?>
                                                         </td>
                                                         <td width='15%' class="fw-bold text-center">
@@ -111,7 +111,7 @@ include('includes/header.php');
 
                                                     <tr>
                                                         <td class="text-end fw-bold">Total Price:</td>
-                                                        <td colspan="3" class="text-end fw-bold"><?= number_format($orderItemRow['total_amount'],0)?> $</td>
+                                                        <td colspan="3" class="text-center fw-bold"><?= number_format($orderItemRow['total_amount'],0)?> $</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
