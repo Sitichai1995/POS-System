@@ -38,7 +38,7 @@ include('includes/header.php');
                                     <td><?= $item['order_status']?></td>
                                     <td><?= $item['payment_mode']?></td>
                                     <td>
-                                        <a class="btn btn-info mb-0 px-2 btn-sm">View</a>
+                                        <a class="btn btn-info mb-0 px-2 btn-sm" href="order-view.php?track=<?= $item['tracking_no']?>">View</a>
                                         <a class="btn btn-primary mb-0 px-2 btn-sm">Print</a>
                                     </td>
                                 </tr>
