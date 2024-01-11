@@ -7,7 +7,8 @@ include('includes/header.php');
         <div class="card-header">
             <h4 class="mb-0">Orders
             </h4>
-            <div class="card-body">
+        </div>
+        <div class="card-body">
 
                 <?php
                 $query = "SELECT o.* , c.* FROM orders o, customers c WHERE c.id = o.customer_id ORDER BY o.id DESC";
@@ -39,7 +40,7 @@ include('includes/header.php');
                                     <td><?= $item['payment_mode']?></td>
                                     <td>
                                         <a class="btn btn-info mb-0 px-2 btn-sm" href="order-view.php?track=<?= $item['tracking_no']?>">View</a>
-                                        <a class="btn btn-primary mb-0 px-2 btn-sm">Print</a>
+                                        <a href="orders-view-print.php?track=<?= $item['tracking_no']?>" class="btn btn-primary mb-0 px-2 btn-sm">Print</a>
                                     </td>
                                 </tr>
 
@@ -58,7 +59,6 @@ include('includes/header.php');
                 }
                 ?>
             </div>
-        </div>
     </div>
 
 </div>
