@@ -14,8 +14,8 @@ if (!isset($_SESSION['productItems'])) {
                 </div>
 
                 <a href="orders.php" class="btn btn-secondary">Close </a>
-                <button type="button" class="btn btn-primary">Print</button>
-                <button type="button" class="btn btn-success">Download PDF</button>
+                <button type="button" onclick="printMybillingArea()" class="btn btn-primary">Print</button>
+                <button type="button" onclick="downloadPDF('<?= $_SESSION['invoice_no']; ?>')" class="btn btn-success">Download PDF</button>
             </div>
         </div>
     </div>
@@ -133,6 +133,8 @@ if (!isset($_SESSION['productItems'])) {
 
                         <div class="mt-4 text-end">
                             <button type="button" class="btn btn-primary px-4 mx-1" id="saveOrder">Save</button>
+                            <button class="btn btn-info px-4 mx-1" onclick="printMybillingArea()">Print</button>
+                            <button class="btn btn-warning px-4 mx-1" onclick="downloadPDF('<?= $_SESSION['invoice_no']; ?>')">Download PDF</button>
                         </div>
 
                     <?php endif; ?>
