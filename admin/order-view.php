@@ -6,6 +6,7 @@ include('includes/header.php');
     <div class="card mt-4 shadow-md">
         <div class="card-header">
             <h4 class="mb-0">Orders</h4>
+            <a href="orders-view-print.php?track=<?= $_GET['track'] ?>" class="btn btn-info mx-2 btn-sm float-end">Print</a>
             <a href="orders.php" class="btn btn-secondary mx-2 btn-sm float-end">ฺBack</a>
             <div class="card-body">
 
