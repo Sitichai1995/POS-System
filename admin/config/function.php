@@ -160,4 +160,22 @@
         echo json_encode($response);
         return;
     }
+
+
+    function getCount ($tableName) {
+        global $conn;
+
+        $table = validate($tableName);
+
+        $query = "SELECT * FROM $table";
+        $queryRes = mysqli_query($conn, $query);
+        if ($queryRes) {
+            $totalCount = mysqli_num_rows($queryRes);
+            return $totalCount;
+
+        } else {
+            return 'something went wrong.';
+        }
+        
+    }
 ?>
