@@ -208,6 +208,40 @@ $(document).ready(function () {
         });
 
     });
+
+
+    
 });
 
 
+function printMybillingArea () {
+    let divContents = document.getElementById('myBillingArea').innerHTML;
+    let a = window.open('','');
+    a.document.write('<html><title> POS System </title>');
+    a.document.write('<body style="font-family: fangsong;">');
+    a.document.write(divContents);
+    a.document.write('</body></htm>');
+    a.document.close();
+    a.print();
+
+}
+
+window.jsPDF = window.jspdf.jsPDF;
+let docPDF = new jsPDF();
+
+
+function downloadPDF(invoiceNo) { 
+    
+    let elementHTML = document.querySelector("#myBillingArea");
+    docPDF.html( elementHTML, {
+        callback: function(){
+            docPDF.save(invoiceNo + '.pdf');
+        },
+        x: 15,
+        y: 15,
+        width: 170,
+        windowWidth: 650
+    })
+
+
+ }
