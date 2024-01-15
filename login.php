@@ -8,10 +8,10 @@ if (isset($_SESSION['loggedIn'])) {
 ?>
 
   
-<div class="py-5 bg-light">
+<div class="py-5 bg-light" style="height: 85vh;">
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+        <div class="row justify-content-center" >
+            <div class="col-md-6" style="margin-top: 100px;">
                 <div class="card shadow rounded-4">
                     <?php alertMessage();?>
                     <div class="p-5">
